@@ -1,0 +1,14 @@
+{
+  "name": "Hypertrack",
+  "version": "1.0.0",
+  "description": "HyperTrack module that allows you to have easy access to HyperTrack API",
+  "main": "lib/hypertrack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HyperTrack",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
