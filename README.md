@@ -3,13 +3,15 @@ Hypertrack API node module
 
 Initialization:
 ```
-const hypertrack = require('hypertrack')('account_id', 'secret_key');
+const Hypertrack = require('hypertrack')('accountId', 'secretKey');
+// OR
+cost HT = new Hypertrack('accountId', 'secretKey');
 ```
 
 Devices API examples:
 ```
-hypertrack.devices.get_device("33A889DD-1A3B-4900-B378-9A76EA948B91").then(device_data => {
-	// Process device_data
+hypertrack.devices.getDevice("33A889DD-1A3B-4900-B378-9A76EA948B91").then(deviceData => {
+	// Process deviceData
 }).catch(error => {
 	// Handle errors
 })
@@ -17,17 +19,17 @@ hypertrack.devices.get_device("33A889DD-1A3B-4900-B378-9A76EA948B91").then(devic
 ```
 List of Devices API methods:
 ```
-get_device(device_id)
-get_device_history(device_id, date)
-start_tracking(device_id)
-stop_tracking(device_id)
-patch_device_name(device_id, name)
-patch_device_metadata(device_id, metadata)
-delete(device_id)
-get_all(pagination, pagination_token)
+getDevice(deviceId)
+getDeviceHistory(deviceId, date)
+startTracking(deviceId)
+stopTracking(deviceId)
+patchDeviceName(deviceId, name)
+patchDeviceMetadata(deviceId, metadata)
+delete(deviceId)
+getAll(pagination, paginationToken)
 ```
 
 Trips API examples(Not ready yet):
 ```
-hypertrack.trips.get(trip_id)
+hypertrack.trips.get(tripId)
 ```
