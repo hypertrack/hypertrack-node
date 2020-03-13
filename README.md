@@ -17,26 +17,26 @@ HT.devices.{device_method}()
 ```
 
 ### Devices API methods:
-| Name  | Description |
-| ------------- | ------------- |
-| `.get(deviceId)`  | Get single device by device ID |
-| `.getHistory(deviceId, date)`  | Create device history |
-| `.getAll(pagination=false, paginationToken)`  | Get all devices. If `pagination` set to `true` it will split result by pages and response will containe `pagination_token` that should be provided to fetch next page  |
-| `.startTracking(deviceId)`  | Start device tracking |
-| `.stopTracking(deviceId)`  | Stop device tracking  |
-| `.changeName(deviceId, name)`  | Change device name |
-| `.patchMetadata(deviceId, metadata)`  | Change device metadata  |
-| `.delete(deviceId)`  | Remove device  |
+| Name  | Description | Arguments | 
+| ------------- | ------------- | ------------- |
+| `.getAll(pagination=false, paginationToken)`  | Get all tracked devices. | `pagination` - if set to `true` it will split result by pages and response will containe `pagination_token` <br/> `paginationToken` - that should be provided to fetch next page |
+| `.get(deviceId)`  | Get a single device | `deviceId` - a string representing the ID of a tracked device, case sensitive|
+| `.getHistory(deviceId, date)`  | Get a single device history. | `deviceId` - a string representing the ID of a tracked device, case sensitive<br/>`date` - a string representing specific date in format YYYY-MM-DD |
+| `.startTracking(deviceId)`  | Start tracking | `deviceId` - a string representing the ID of device, case sensitive |
+| `.stopTracking(deviceId)`  | Stop tracking  | `deviceId` - a string representing the ID of device, case sensitive |
+| `.changeName(deviceId, name)`  | Update a single device's name | `deviceId` - a string representing the ID of device, case sensitive<br/> `name` - new device name |
+| `.patchMetadata(deviceId, metadata)`  | Update a single device's metadata  | `deviceId` - a string representing the ID of device, case sensitive<br/> `metadata` - new device metadata object |
+| `.delete(deviceId)`  | Remove a single device. Once it is removed, the device will not be able send location data| `deviceId` - a string representing the ID of device, case sensitive |
 
 ### Trips API methods:
-| Name  | Description |
-| ------------- | ------------- |
-| `.get(tripId)`  | Get single trip by trip ID  |
-| `.create(tripData)`  | Create trip  |
-| `.complete(tripId)`  | Complete trip  |
-| `.getAll(tripStatus='completed', paginationToken)`  | Get all trips in account. Can be filtered by trip status `active \| completed \| processing_completion`. `paginationToken` allows you to request next page of trips list |
-| `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update trip geofence metadata. `metadata` is JS Object  |
-| `.getGeofence(tripId, geofenceId)`  | Get trip geofence  |
+| Name  | Description | Arguments |
+| ------------- | ------------- | ------------- |
+| `.create(tripData)`  | Start a new trip for a device. | `tripData` - object with [data](https://docs.hypertrack.com/#references-apis-trips-post-trips) |
+| `.getAll(tripStatus='completed', paginationToken)`  | Get all trips. This endpoint return active trips by default | `tripStatus` - (optional) a string representing the trip status to filter by. Default is `active` . Can be one of `active \| completed \| processing_completion`<br/>`paginationToken` allows you to request next page of trips list |
+| `.get(tripId)`  | Get a single trip | `tripId` - a string representing the ID of a trip, case sensitive |
+| `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update a trip geofence metadata. | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated<br/>`metadata` - is JS Object with data to update |
+| `.getGeofence(tripId, geofenceId)`  | Get trip geofence | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated |
+| `.complete(tripId)`  | Complete an active trip. This will initiate a procedure on the HyperTrack platform | `tripId` - a string representing the trip ID |
 
 
 All API methods return [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
