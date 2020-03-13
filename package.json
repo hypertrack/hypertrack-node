@@ -4,11 +4,14 @@
   "description": "HyperTrack module that allows you to have easy access to HyperTrack API",
   "main": "lib/hypertrack.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 30000"
   },
   "author": "HyperTrack",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.0"
   }
 }
