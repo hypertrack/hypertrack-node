@@ -31,7 +31,7 @@ HT.devices.{device_method}()
 ### Trips API methods:
 | Name  | Description | Arguments |
 | ------------- | ------------- | ------------- |
-| `.create(tripData)`  | Start a new trip for a device. | `tripData` - object with [data](https://docs.hypertrack.com/#references-apis-trips-post-trips) |
+| `.create(tripData)`  | Start a new trip for a device. | `tripData` - object with trip [data](https://docs.hypertrack.com/#references-apis-trips-post-trips) |
 | `.getAll(tripStatus='completed', paginationToken)`  | Get all trips. This endpoint return active trips by default | `tripStatus` - (optional) a string representing the trip status to filter by. Default is `active` . Can be one of `active \| completed \| processing_completion`<br/>`paginationToken` allows you to request next page of trips list |
 | `.get(tripId)`  | Get a single trip | `tripId` - a string representing the ID of a trip, case sensitive |
 | `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update a trip geofence metadata. | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated<br/>`metadata` - is JS Object with data to update |
