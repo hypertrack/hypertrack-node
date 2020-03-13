@@ -9,23 +9,12 @@ const Hypertrack = require('hypertrack');
 const HT = new Hypertrack('accountId', 'secretKey');
 ```
 
-There are two different API's, `trips` and `devices` and they are available under `Hypertrack` class.
+This helper library provides `devices` and `trips` API and they are available under `Hypertrack` class.
 ```
 const devices_api = HT.devices;
 // OR use directly
 HT.devices.{device_method}()
 ```
-
-### Trips API methods:
-| Name  | Description |
-| ------------- | ------------- |
-| `.get(tripId)`  | Get single trip by trip ID  |
-| `.create(tripData)`  | Create trip  |
-| `.complete(tripId)`  | Complete trip  |
-| `.getAll(tripStatus='completed', paginationToken)`  | Get all trips in account. Can be filtered by trip status `active \| completed \| processing_completion`. `paginationToken` allows you to request next page of trips list |
-| `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update trip geofence metadata. `metadata` is JS Object  |
-| `.getGeofence(tripId, geofenceId)`  | Get trip geofence  |
-
 
 ### Devices API methods:
 | Name  | Description |
@@ -38,6 +27,17 @@ HT.devices.{device_method}()
 | `.changeName(deviceId, name)`  | Change device name |
 | `.patchMetadata(deviceId, metadata)`  | Change device metadata  |
 | `.delete(deviceId)`  | Remove device  |
+
+### Trips API methods:
+| Name  | Description |
+| ------------- | ------------- |
+| `.get(tripId)`  | Get single trip by trip ID  |
+| `.create(tripData)`  | Create trip  |
+| `.complete(tripId)`  | Complete trip  |
+| `.getAll(tripStatus='completed', paginationToken)`  | Get all trips in account. Can be filtered by trip status `active \| completed \| processing_completion`. `paginationToken` allows you to request next page of trips list |
+| `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update trip geofence metadata. `metadata` is JS Object  |
+| `.getGeofence(tripId, geofenceId)`  | Get trip geofence  |
+
 
 All API methods return [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
