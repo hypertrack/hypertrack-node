@@ -1,7 +1,7 @@
 # hypertrack-node
 Hypertrack API node module
 
-## Initialization:
+### Initialization:
 ```
 const Hypertrack = require('hypertrack')('accountId', 'secretKey');
 // OR
@@ -16,7 +16,7 @@ const devices_api = HT.devices;
 HT.devices.{device_method}()
 ```
 
-## Trips API methods:
+### Trips API methods:
 | Name  | Description |
 | ------------- | ------------- |
 | `.get(tripId)`  | Get single trip by trip ID  |
@@ -27,7 +27,7 @@ HT.devices.{device_method}()
 | `.getGeofence(tripId, geofenceId)`  | Get trip geofence  |
 
 
-## Devices API methods list:
+### Devices API methods:
 | Name  | Description |
 | ------------- | ------------- |
 | `.get(deviceId)`  | Get single device by device ID |
@@ -41,18 +41,22 @@ HT.devices.{device_method}()
 
 All API methods return [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-## Examples:
+### Examples:
 
 Change device name:
 ```
 const Hypertrack = require('./lib/Hypertrack');
 const ht = new Hypertrack('account_id', 'secret_key');
 
+// Get signle device by device id
 ht.devices.get("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F").then(device => {
   console.log(device.device_info.name);
-  // --> Denys
-	
+  // Output --> Denys
+  
+  // Change name
   ht.devices.changeName("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F", "Test Change Name");
+  
+  // Return promise so we could do .then() on next block.
   return ht.devices.get("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F")
 }).then(device => {
   console.log(device.device_info.name);
