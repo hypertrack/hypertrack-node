@@ -2,7 +2,7 @@
 Hypertrack API node module
 
 ### Initialization:
-```
+```javascript
 const Hypertrack = require('hypertrack')('accountId', 'secretKey');
 // OR
 const Hypertrack = require('hypertrack');
@@ -10,10 +10,10 @@ const HT = new Hypertrack('accountId', 'secretKey');
 ```
 
 This helper library provides `devices` and `trips` API and they are available under `Hypertrack` class.
-```
+```javascript
 const devices_api = HT.devices;
 // OR use directly
-HT.devices.{device_method}()
+HT.devices.{device_method}();
 ```
 
 ### Devices API methods:
@@ -44,7 +44,7 @@ All API methods return [Promises](https://developer.mozilla.org/en-US/docs/Web/J
 ### Examples:
 
 Change device name:
-```
+```javascript
 const Hypertrack = require('./lib/Hypertrack');
 const ht = new Hypertrack('account_id', 'secret_key');
 
@@ -67,7 +67,7 @@ ht.devices.get("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F").then(device => {
 ```
 
 Using async/await:
-```
+```javascript
 (async () => {
   const device = await ht.devices.get("33A889DD-1A3B-4900-B378-9A76EA948B91");
   // Work with device data
@@ -78,3 +78,16 @@ Errors can be catched in `.catch(error => {})` block.
 Depends on resource there might be different error codes and details, full list of errors you can check [here](https://docs.hypertrack.com/#references-http-errors)
 
 REST API documentation can be found [here](https://docs.hypertrack.com/#references-apis)
+
+### Testing
+In order to run tests you need to setup some ENV variables first.
+There are 3 required ENV variables:
+ - HT_ACCOUNT_ID: AccountId, can be found on [setup](https://dashboard.hypertrack.com/setup) page.
+ - HT_SECRET_KEY: SecretKey, can be found on [setup](https://dashboard.hypertrack.com/setup) page.
+ - HT_EXISTING_DEVICE_ID: DeviceID registered in the system. 
+ 
+ After setup is done, you can run tests:
+ ```bash
+npm test
+```
+ 

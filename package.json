@@ -1,13 +1,42 @@
 {
-  "name": "Hypertrack",
-  "version": "1.0.0",
-  "description": "HyperTrack module that allows you to have easy access to HyperTrack API",
+  "name": "hypertrack",
+  "version": "3.0.1",
+  "description": "HyperTrack API wrapper",
   "main": "lib/hypertrack.js",
   "scripts": {
     "test": "mocha --timeout 30000"
   },
-  "author": "HyperTrack",
+  "author": {
+    "name": "HyperTrack",
+    "email": "help@hypertrack.com",
+    "url": "https://hypertrack.com"
+  },
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypertrack/hypertrack-node"
+  },
+  "bugs": {
+    "url": "https://github.com/hypertrack/hypertrack-node/issues"
+  },
+  "bundleDependencies": false,
+  "bugs:": "https://github.com/hypertrack/hypertrack-node/issues",
+  "contributors": [
+    {
+      "name": "Hypertrack",
+      "email": "help@hypertrack.com",
+      "url": "https://hypertrack.com/"
+    }
+  ],
+  "engines": {
+    "node": ">= v0.10.0"
+  },
+  "keywords": [
+    "hypertrack",
+    "location tracking",
+    "gps",
+    "hypertrack api"
+  ],
   "dependencies": {
     "axios": "^0.19.2"
   },
