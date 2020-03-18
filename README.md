@@ -22,6 +22,7 @@ HT.devices.{device_method}();
 | `.getAll(pagination=false, paginationToken)`  | Get all tracked devices. | `pagination` - if set to `true` it will split result by pages and response will containe `pagination_token` <br/> `paginationToken` - that should be provided to fetch next page |
 | `.get(deviceId)`  | Get a single device | `deviceId` - a string representing the ID of a tracked device, case sensitive|
 | `.getHistory(deviceId, date)`  | Get a single device history. | `deviceId` - a string representing the ID of a tracked device, case sensitive<br/>`date` - a string representing specific date in format YYYY-MM-DD |
+| `.getAccountHistory(date, response, responseType, unit)`  | Get data for all tracked devices for a specified day. Data is available for the the last 60 days. | `date` - a string representing specific date in format YYYY-MM-DD<br/>`response` - response object can be one of: `blob` or `file`<br/>`responseType` - response type can be one of: `json` or `csv`<br/>`unit` - metric or imperial system: `km` or `mi` |
 | `.startTracking(deviceId)`  | Start tracking | `deviceId` - a string representing the ID of device, case sensitive |
 | `.stopTracking(deviceId)`  | Stop tracking  | `deviceId` - a string representing the ID of device, case sensitive |
 | `.changeName(deviceId, name)`  | Update a single device's name | `deviceId` - a string representing the ID of device, case sensitive<br/> `name` - new device name |
@@ -36,6 +37,7 @@ HT.devices.{device_method}();
 | `.get(tripId)`  | Get a single trip | `tripId` - a string representing the ID of a trip, case sensitive |
 | `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update a trip geofence metadata. | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated<br/>`metadata` - is JS Object with data to update |
 | `.getGeofence(tripId, geofenceId)`  | Get trip geofence | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated |
+| `.createGeofences(tripId, geofences)`  | Add more geofences to an ongoing trip, in addition to geofences you might have created when creating trip. | `tripId` - a string representing the trip ID<br/>`geofences` - list of geofences |
 | `.complete(tripId)`  | Complete an active trip. This will initiate a procedure on the HyperTrack platform | `tripId` - a string representing the trip ID |
 
 
