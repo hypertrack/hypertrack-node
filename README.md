@@ -25,9 +25,3 @@ You can run the existing tests to see if everything is okay by executing:
 ```bash
 npm test
 ```
-
-To run just one specific test file instead of the whole suite, provide a JavaScript regular expression that will match your spec file's name, like:
-
-```bash
-npm run test -- -m .\*client.\*
-```
