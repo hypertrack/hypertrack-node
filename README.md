@@ -1,95 +1,33 @@
 # hypertrack-node
-Hypertrack API node module
 
-### Initialization:
-```javascript
-const Hypertrack = require('hypertrack')('accountId', 'secretKey');
-// OR
-const Hypertrack = require('hypertrack');
-const HT = new Hypertrack('accountId', 'secretKey');
+HyperTrack API Node.js module
+
+## Documentation
+
+The documentation for the HyperTrack API and library usage can be found [here](https://docs.hypertrack.com/#references-apis).
+
+## Contributing
+
+Bug fixes, docs, and library improvements are always welcome. 
+
+#### Getting Started
+
+If you want to familiarize yourself with the project, you can start by [forking the repository](https://help.github.com/articles/fork-a-repo/) and [cloning it in your local development environment](https://help.github.com/articles/cloning-a-repository/). The project requires [Node.js](https://nodejs.org) to be installed on your machine.
+
+After cloning the repository, install the dependencies by running the following command in the directory of your cloned repository:
+
+```bash
+npm install
 ```
 
-This helper library provides `devices` and `trips` API and they are available under `Hypertrack` class.
-```javascript
-const devices_api = HT.devices;
-// OR use directly
-HT.devices.{device_method}();
-```
+You can run the existing tests to see if everything is okay by executing:
 
-### Devices API methods:
-| Name  | Description | Arguments | 
-| ------------- | ------------- | ------------- |
-| `.getAll(pagination=false, paginationToken)`  | Get all tracked devices. | `pagination` - if set to `true` it will split result by pages and response will containe `pagination_token` <br/> `paginationToken` - that should be provided to fetch next page |
-| `.get(deviceId)`  | Get a single device | `deviceId` - a string representing the ID of a tracked device, case sensitive|
-| `.getHistory(deviceId, date)`  | Get a single device history. | `deviceId` - a string representing the ID of a tracked device, case sensitive<br/>`date` - a string representing specific date in format YYYY-MM-DD |
-| `.getAccountHistory(date, response, responseType, unit)`  | Get data for all tracked devices for a specified day. Data is available for the the last 60 days. | `date` - a string representing specific date in format YYYY-MM-DD<br/>`response` - response object can be one of: `blob` or `file`<br/>`responseType` - response type can be one of: `json` or `csv`<br/>`unit` - metric or imperial system: `km` or `mi` |
-| `.startTracking(deviceId)`  | Start tracking | `deviceId` - a string representing the ID of device, case sensitive |
-| `.stopTracking(deviceId)`  | Stop tracking  | `deviceId` - a string representing the ID of device, case sensitive |
-| `.changeName(deviceId, name)`  | Update a single device's name | `deviceId` - a string representing the ID of device, case sensitive<br/> `name` - new device name |
-| `.patchMetadata(deviceId, metadata)`  | Update a single device's metadata  | `deviceId` - a string representing the ID of device, case sensitive<br/> `metadata` - new device metadata object |
-| `.delete(deviceId)`  | Remove a single device. Once it is removed, the device will not be able send location data| `deviceId` - a string representing the ID of device, case sensitive |
-
-### Trips API methods:
-| Name  | Description | Arguments |
-| ------------- | ------------- | ------------- |
-| `.create(tripData)`  | Start a new trip for a device. | `tripData` - object with trip [data](https://docs.hypertrack.com/#references-apis-trips-post-trips) |
-| `.getAll(tripStatus='completed', paginationToken)`  | Get all trips. This endpoint return active trips by default | `tripStatus` - (optional) a string representing the trip status to filter by. Default is `active` . Can be one of `active \| completed \| processing_completion`<br/>`paginationToken` allows you to request next page of trips list |
-| `.get(tripId)`  | Get a single trip | `tripId` - a string representing the ID of a trip, case sensitive |
-| `.patchGeofenceMetadata(tripId, geofenceId, metadata)`  | Update a trip geofence metadata. | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated<br/>`metadata` - is JS Object with data to update |
-| `.getGeofence(tripId, geofenceId)`  | Get trip geofence | `tripId` - a string representing the trip ID<br/>`geofenceId` - a string representing the geofence ID for which metadata is being updated |
-| `.createGeofences(tripId, geofences)`  | Add more geofences to an ongoing trip, in addition to geofences you might have created when creating trip. | `tripId` - a string representing the trip ID<br/>`geofences` - list of geofences |
-| `.complete(tripId)`  | Complete an active trip. This will initiate a procedure on the HyperTrack platform | `tripId` - a string representing the trip ID |
-
-
-All API methods return [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-
-### Examples:
-
-Change device name:
-```javascript
-const Hypertrack = require('./lib/Hypertrack');
-const ht = new Hypertrack('account_id', 'secret_key');
-
-// Get signle device by device id
-ht.devices.get("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F").then(device => {
-  console.log(device.device_info.name);
-  // Output --> Denys
-  
-  // Change name
-  ht.devices.changeName("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F", "Test Change Name");
-  
-  // Return promise so we could do .then() on next block.
-  return ht.devices.get("FB1C99E3-CB2B-303A-9F92-E7AAAC22F72F")
-}).then(device => {
-  console.log(device.device_info.name);
-  // --> Test Change Name
-}).catch(error => {
-  // Error handling.
-});
-```
-
-Using async/await:
-```javascript
-(async () => {
-  const device = await ht.devices.get("33A889DD-1A3B-4900-B378-9A76EA948B91");
-  // Work with device data
-})()
-```
-
-Errors can be catched in `.catch(error => {})` block.
-Depends on resource there might be different error codes and details, full list of errors you can check [here](https://docs.hypertrack.com/#references-http-errors)
-
-REST API documentation can be found [here](https://docs.hypertrack.com/#references-apis)
-
-### Testing
-In order to run tests you need to setup some ENV variables first.
-There are 3 required ENV variables:
- - HT_ACCOUNT_ID: AccountId, can be found on [setup](https://dashboard.hypertrack.com/setup) page.
- - HT_SECRET_KEY: SecretKey, can be found on [setup](https://dashboard.hypertrack.com/setup) page.
- - HT_EXISTING_DEVICE_ID: DeviceID registered in the system. 
- 
- After setup is done, you can run tests:
- ```bash
+```bash
 npm test
 ```
- 
+
+To run just one specific test file instead of the whole suite, provide a JavaScript regular expression that will match your spec file's name, like:
+
+```bash
+npm run test -- -m .\*client.\*
+```
