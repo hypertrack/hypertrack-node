@@ -4,9 +4,9 @@ HyperTrack API Node.js module
 
 ## Getting Started and Documentation
 
-To get started, please visit this [page](https://docs.hypertrack.com/#references-helper-libraries-node-js-helper-library).
+To get started, please visit this [page](https://www.hypertrack.com/docs/references/#references-helper-libraries-node-js-helper-library).
 
-The documentation for the HyperTrack API and library usage can be found [here](https://docs.hypertrack.com/#references-apis).
+The documentation for the HyperTrack API and library usage can be found [here](https://www.hypertrack.com/docs/references/#references-apis).
 
 ## Contributing
 
