@@ -25,5 +25,9 @@ npm install
 You can run the existing tests to see if everything is okay by executing:
 
 ```bash
+export HT_ACCOUNT_ID={AccountId}
+export HT_SECRET_KEY={AccountSecret}
+export HT_EXISTING_DEVICE_ID={ExistingDeviceId}
+
 npm test
 ```
