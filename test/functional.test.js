@@ -59,6 +59,15 @@ describe('Devices API tests', () => {
     })
   });
 
+  it('Get account history', () => {
+    let today = new Date()
+    let yesterday = today.setDate(today.getDate() - 1)
+    let yesterday_str = today.toISOString().substring(0, 10)
+    return ht.devices.getAccountHistory(yesterday_str).then(history => {
+      assert.ok('url' in history)
+    })
+  });
+
 });
 
 describe('Trips API tests', () => {
