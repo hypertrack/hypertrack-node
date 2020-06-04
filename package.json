@@ -1,6 +1,6 @@
 {
   "name": "hypertrack",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "HyperTrack API wrapper",
   "main": "lib/hypertrack.js",
   "scripts": {
